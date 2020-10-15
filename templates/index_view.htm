@@ -1,0 +1,144 @@
+{%extends 'base_layout.htm'%}
+{% load static %}
+{%block content%}
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="#intro">Welcome</a></li>
+                <li><a href="#one">Blog</a></li>
+                <li><a href="#two">Services</a></li>
+                <li><a href="#three">Get in touch</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Intro -->
+        <section id="intro" class="wrapper style1 fullscreen fade-up">
+            <div class="inner">
+                <h1>Hto Studios</h1>
+                <p>
+                    Embrasing creativity and design <br>
+                    Art makes the world a beautiful place
+                </p>
+                <ul class="actions">
+                    <li><a href="/about" class="button scrolly">About us</a></li>
+                </ul>
+            </div>
+        </section>
+
+    <!-- One -->
+        <section id="one" class="wrapper style2 spotlights">
+            {%for article in articles%}
+            <section>
+                <a href="#" class="image"><img src="{{article.thumb.url}}" alt="{{article.title}}" data-position="center center" /></a>
+                <div class="content">
+                    <div class="inner">
+                        <h2>{{article.title}}</h2>
+                        <p>{{article.date}}</p>
+                        <p>{{article.snippet}}</p>
+                        <ul class="actions">
+                            <li><a href="/articles/{{article.slug}}" class="button">Read more</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            {%endfor%}
+        </section>
+
+    <!-- Two -->
+        <section id="two" class="wrapper style3 fade-up">
+            <div class="inner">
+                <h2>What we do</h2>
+                <p>We showcase different forms of art like pixel 2D art, 3D models, Animations, CGI, Videogames and app design themes, yes app design themes because at Hto Studios web design and development is not a coding skill, its an art
+                   We also have a blog post where by we write about tech related topics and art.you can view our work from <a href="#">here</a></p>
+                <div class="features">
+                    <section>
+                        <span class="icon solid major fa-gamepad"></span>
+                        <a href="/services/gameview"><h3>Game development</h3></a>
+                        <p>We develop games for PC, Android and IOS. from simple 2D games to high quality multi-player crossplatform games.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-code"></span>
+                        <a href="/services/webview/"><h3>Web development</h3></a>
+                        <p>We can develop any kind of website, from a simple blog site, to a large scalable ecomerce website to bring your business online.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-paint-brush"></span>
+                        <a href="/services/artview/"><h3>3D Art</h3></a>
+                        <p> We create 3D models, both low poly and high poly that you can use in your projects i.e. video games and animation films.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-desktop"></span>
+                        <a href="/services/animation/"><h3>3D Animations</h3></a>
+                        <p>Aside from 3D models, we also render 3D animations on tools like Maya and Blender, to be used in projects such as product advertisement.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-cog"></span>
+                        <a href="/services/threed/"><h3>UI/UX design</h3></a>
+                        <p>User interface and expirience are the most the vital parts when it comes to the success of any app. We can design morden responsive templates for your mobile and web applications.</p>
+                    </section>
+                    <section>
+                        <span class="icon solid major fa-code"></span>
+                        <a href="/srvices/webview/"><h3>App Development</h3></a>
+                        <p>We also create responsive and native mobile apps that can run on both Android and IOS through the use of tools like Fluter and React Native. </p>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+    <!-- Three -->
+        <section id="three" class="wrapper style1 fade-up">
+            <div class="inner">
+                <h2>Get in touch</h2>
+                <p> Say hi, post your blog suggestions and business enquireries.</p>
+                <div class="split style1">
+                    <section>
+                        <form method="post" action="/">
+                            {% csrf_token %}
+                            <div class="fields">
+                                {%for field in form%}
+                                <div class="field half">
+                                    <label for="{{field.name}}">{{field.name}}</label>
+                                    {{field}}
+                                </div>
+                                {%endfor%}
+                            </div>
+                            <ul class="actions">
+                                <li><a href="/" class="button submit">Send Message</a></li>
+                            </ul>
+                        </form>
+                    </section>
+                    <section>
+                        <ul class="contact">
+                            <li>
+                                <h3>Hto studios</h3>
+                            </li>
+                            <li>
+                                <h3>Email</h3>
+                                <a href="#">htostudiosbusiness@gmail.com</a>
+                            </li>
+                            <li>
+                                <h3>Nairobi KENYA</h3>
+                            </li>
+                            <li>
+                                <h3>Social</h3>
+                                <ul class="icons">
+                                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                                    <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+</div>
+{%endblock%}

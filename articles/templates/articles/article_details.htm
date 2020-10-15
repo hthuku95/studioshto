@@ -1,0 +1,73 @@
+{%extends 'base_layout.htm'%}
+{%block content%}
+
+		<!-- Header -->
+        <header id="header">
+				<a href="/" class="title">Hto Studios</a>
+				<nav>
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li><a href="/articles" class="active">Blog</a></li>
+						<li><a href="/about">About</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				    <!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+                            <div class="body-container">
+                                <h1 class="major">{{article.title}}</h1>
+                                <p>By <strong>{{article.author}}</strong> {{article.date}}</p>
+                                <p style="font-style: italic;">{{article.summary}}</p>
+                                <span class="image fit"><img src="{{article.thumb.url}}" alt="{{article.title}}" class="article-image"></span>
+                                <p class="thumb-description"><em>{{article.thumb_description}}</em></p>
+                                <p>{{article.introduction}}</p>
+                                <span class="image fit"><img src="{{article.thumb_one.url}}" alt="{{article.thumb_one_description}}" class="article-image"/></span>
+                                <p class="thumb-description"><em>{{article.thumb_one_description}}</em></p>
+                                <p>{{article.section_one}}</p>
+                                <span class="image fit"><img src="{{article.thumb_two.url}}" alt="{{article.thumb_two_description}}" class="article-image" /></span>
+                                <p class="thumb-description"><em>{{article.thumb_two_description}}</em></p>
+                                <p>{{article.section_two}}</p>
+                                <span class="image fit"><img src="{{article.thumb_three.url}}" alt="{{article.thumb_three_description}}" class="article-image"/></span>
+                                <p class="thumb-description"><em>{{article.thumb_three_description}}</em></p>
+                                <p>{{article.section_three}}</p>
+                            <!-- Comment section -->
+                                <h1 class="major">
+                                    <h2><em>Add comments</em> </h2>
+                                </h1>
+                                <div class="comment-box">
+                                    <div class="my-comment-section">
+                                        <form action="/articles/comment/{{article.slug}}/" method="post">
+                                            {% csrf_token %}
+                                            <div class="fields">
+                                                {%for field in form%}
+                                                <div class="field half">
+                                                    <label for="{{field.name}}">{{field.name}}</label>
+                                                    {{field}}
+                                                </div>
+                                                {%endfor%}
+                                            </div>
+                                            <input type="submit"class="btn btn-secondary my-comment-button" value="Add Comment">
+                                        </form>
+                                    </div>
+                                    <h1 class="major">
+                                       <h2><em>{{numberOfComments}} Comments</em></h2> 
+                                    </h1>
+                                    <ul class="list-group">
+                                        {%for comment in comments%}
+                                        <li class="list-group-item">
+                                            <p><strong>{{comment.name}}</strong> <a href="#">{{comment.date}}</a> </p>
+                                            <p>{{comment.comment_body}}</p>
+                                        </li>
+                                        {%endfor%}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                     </section>
+			</div>
+
+{%endblock%}

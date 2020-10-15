@@ -1,0 +1,20 @@
+{%extends 'base_layout.htm'%}
+{%block content%}
+    <section id="one" class="wrapper style2 spotlights">
+        {%for article in articles%}
+            <section>
+                <a href="#" class="image"><img src="{{article.thumb.url}}" alt="{{article.title}}" data-position="center center" /></a>
+                <div class="content">
+                    <div class="inner">
+                        <h2>{{article.title}}</h2>
+                        <p>{{article.date}}</p>
+                        <p>{{article.snippet}}</p>
+                        <ul class="actions">
+                            <li><a href="/articles/{{article.slug}}" class="button">Read more</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        {%endfor%}
+    </section>
+{%endblock%}
