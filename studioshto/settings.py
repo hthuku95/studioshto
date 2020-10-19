@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '0^!^d#o%x^efe4b$alnp6a#dpl^we#qyq@h^c$0!wk=8yi#d^^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['157.230.185.185','htostudios.com','www.htostudios.com',]
 
