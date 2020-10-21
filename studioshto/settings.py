@@ -14,7 +14,7 @@ SECRET_KEY = '0^!^d#o%x^efe4b$alnp6a#dpl^we#qyq@h^c$0!wk=8yi#d^^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['157.230.185.185','htostudios.com','www.htostudios.com',]
+ALLOWED_HOSTS = ['157.230.185.185','htostudios.com','www.htostudios.com','127.0.0.1','localhost']
 
 
 # Application definition
@@ -66,17 +66,24 @@ WSGI_APPLICATION = 'studioshto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-
-DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'studioshto',
-    'USER': 'harry',
-    'PASSWORD': '$6085hto',
-    'HOST': 'localhost',
-    'PORT': '',
+if DEBUG:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'studioshto',
+        'USER': 'harry',
+        'PASSWORD': '$6085hto',
+        'HOST': 'localhost',
+        'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
