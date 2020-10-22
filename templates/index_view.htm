@@ -22,7 +22,7 @@
             <div class="inner">
                 <h1>Hto Studios</h1>
                 <p>
-                    Embrasing creativity and design <br>
+                    Embracing creativity and design <br>
                     Art makes the world a beautiful place
                 </p>
                 <ul class="actions">
@@ -35,9 +35,13 @@
         <section id="one" class="wrapper style2 spotlights">
             {%for article in articles%}
             <section>
-                <a href="#" class="image"><img src="{{article.thumb.url}}" alt="{{article.title}}" data-position="center center" /></a>
+                <a href="/articles/{{article.slug}}" class="image"><img src="{{article.thumb.url}}" alt="{{article.title}}" data-position="center center" /></a>
                 <div class="content">
                     <div class="inner">
+                        <p>{%for item in article.category.all%}
+                            <a href="/articles/category/{{item.name}}/">{{item.name}}</a>,
+                            {%endfor%}
+                        </p>
                         <h2>{{article.title}}</h2>
                         <p>{{article.date}}</p>
                         <p>{{article.snippet}}</p>

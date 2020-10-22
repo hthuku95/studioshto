@@ -5,6 +5,12 @@ from .forms import CommentForm , ReplyForm
 
 # Create your views here.
 
+#article category page
+def article_category(request, slug):
+    articles = Article.objects.filter(category__name = slug)
+    categories = Category.objects.all()
+    return render(request,'articles/article_category.htm',{'articles':articles,'categories':categories})
+
 #article list page
 def article_list(request):
     articles = Article.objects.all().order_by('-date')
@@ -13,6 +19,7 @@ def article_list(request):
 #article details
 def article_details(request,slug):
     article = Article.objects.get(slug=slug)
+    stories = Article.objects.all().order_by('date')[:5]
     comments = Comment.objects.filter(parent_article=article)
     #updating the number of views
     article.views = article.views + 1
@@ -24,7 +31,7 @@ def article_details(request,slug):
 
     #number of comments
     numberOfComments = Comment.objects.filter(parent_article=article).count()
-    return render(request,'articles/article_details.htm',{'article':article,'comments':comments,'form':form,'form_2':form_2,'numberOfComments':numberOfComments})
+    return render(request,'articles/article_details.htm',{'article':article,'comments':comments,'form':form,'form_2':form_2,'numberOfComments':numberOfComments,'stories':stories})
 
 
 #article comments

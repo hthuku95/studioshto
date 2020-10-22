@@ -7,4 +7,5 @@ urlpatterns = [
     path(r'<slug>/',views.article_details, name='article_detail'),
     path(r'comment/<slug>/',views.article_comment),
     path(r'reply/<slug>/',views.article_reply),
+    path(r'category/<slug>/',views.article_category, name= 'article_category'),
 ]

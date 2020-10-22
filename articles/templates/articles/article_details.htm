@@ -38,6 +38,16 @@
                                 <p>{{article.section_three}}</p>
                             <!-- Comment section -->
                                 <h1 class="major">
+                                    <h2><em>you can also read...</em></h2>
+                                </h1>
+                                <ul class="list-group">
+                                    {%for story in stories%}
+                                    <li class="list-group-item">
+                                        <p><a href="/articles/{{story.title}}/">{{story.title}}</a> </p>
+                                    </li>
+                                    {%endfor%}
+                                </ul>
+                                <h1 class="major">
                                     <h2><em>Add comments</em> </h2>
                                 </h1>
                                 <div class="comment-box">

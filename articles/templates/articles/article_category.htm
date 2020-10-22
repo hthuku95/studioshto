@@ -1,10 +1,22 @@
 {%extends 'base_layout.htm'%}
 {%load static%}
 {%block content%}
+<section id="sidebar">
+        <div class="inner">
+            <nav>
+                <ul>
+                    <li><a href="#one">Blog</a></li>
+                    <li><a href="#two">Services</a></li>
+                    <li><a href="#three">Get in touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+<div id="wrapper">
     <section id="one" class="wrapper style2 spotlights">
         {%for article in articles%}
             <section>
-                <a href="/articles/{{article.slug}}" class="image"><img src="{{article.thumb.url}}" alt="{{article.title}}" data-position="center center" /></a>
+                <a href="#" class="image"><img src="{{article.thumb.url}}" alt="{{article.title}}" data-position="center center" /></a>
                 <div class="content">
                     <div class="inner">
                         <p>{%for item in article.category.all%}
@@ -22,4 +34,5 @@
             </section>
         {%endfor%}
     </section>
+</div>
 {%endblock%}
