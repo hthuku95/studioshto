@@ -10,7 +10,7 @@
                 <div class="content">
                     <div class="inner">
                         <p>{%for item in project.service.all%}
-                            <a href="/services/{{item.name}}/">{{item.name}}</a>,
+                            <a href="/services/service_list/{{item.name}}/">{{item.name}}</a>,
                             {%endfor%}
                         </p>
                         <h2>{{project.title}}</h2>
