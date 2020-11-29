@@ -1,0 +1,31 @@
+{%extends 'base_layout.htm'%}
+{% load static %}
+{% block title %}Hto Studios - Services{% endblock %}
+{%block content%}
+<div id="wrapper">
+    <section id="one" class="wrapper style2 spotlights">
+        {%for project in projects%}
+            <section>
+                <a href="#" class="image"><img src="{{project.thumb.url}}" alt="{{project.title}}" data-position="center center" /></a>
+                <div class="content">
+                    <div class="inner">
+                        <p>{%for item in project.service.all%}
+                            <a href="/services/{{item.name}}/">{{item.name}}</a>,
+                            {%endfor%}
+                        </p>
+                        <h2>{{project.title}}</h2>
+                        <p>{{project.date}}</p>
+                        <p>{{project.description}}</p>
+                        <p>
+                            <a href="/{{project.source_link}}/">View source</a>,<a href="/{{project.display_link}}/">prevew</a>,<a href="/{{project.buy_link}}/">Buy</a>
+                        </p>
+                        <ul class="actions">
+                            <li><a href="/{{project.display_link}}/" class="button">Prevew</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        {%endfor%}
+    </section>
+</div>
+{%endblock%}

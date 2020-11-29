@@ -21,11 +21,13 @@
     <!-- Intro -->
         <section id="intro" class="wrapper style1 fullscreen fade-up">
             <div class="inner">
-                <h1>Hto Studios</h1>
+                {%for welcome in welcomes%}
+                <h1>{{welcome.brand_name}}</h1>
                 <p>
-                    Embracing creativity and design <br>
-                    Art makes the world a beautiful place
+                    {{welcome.brand_quote_one}} <br>
+                    {{welcome.brand_quote_two}}
                 </p>
+                {%endfor%}
                 <ul class="actions">
                     <li><a href="/about" class="button scrolly">About us</a></li>
                 </ul>
@@ -58,40 +60,18 @@
     <!-- Two -->
         <section id="two" class="wrapper style3 fade-up">
             <div class="inner">
-                <h2>What we do</h2>
-                <p>We showcase different forms of art like pixel 2D art, 3D models, Animations, CGI, Videogames and app design themes, yes app design themes because at Hto Studios web design and development is not a coding skill, its an art
-                   We also have a blog post where by we write about tech related topics and art.you can view our work from <a href="#">here</a></p>
+                {%for solution in solutions%}
+                <h2>{{solution.title}}</h2>
+                <p>{{solution.body}}</p>
+                {%endfor%}
                 <div class="features">
+                    {%for service in services%}
                     <section>
-                        <span class="icon solid major fa-gamepad"></span>
-                        <a href="/services/gameview"><h3>Game development</h3></a>
-                        <p>We develop games for PC, Android and IOS. from simple 2D games to high quality multi-player crossplatform games.</p>
+                        <span class="{{service.fav_icon}}"></span>
+                        <a href="/services/{{service.name}}/"><h3>{{service.name}}</h3></a>
+                        <p>{{service.description}}</p>
                     </section>
-                    <section>
-                        <span class="icon solid major fa-code"></span>
-                        <a href="/services/webview/"><h3>Web development</h3></a>
-                        <p>We can develop any kind of website, from a simple blog site, to a large scalable ecomerce website to bring your business online.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-paint-brush"></span>
-                        <a href="/services/artview/"><h3>3D Art</h3></a>
-                        <p> We create 3D models, both low poly and high poly that you can use in your projects i.e. video games and animation films.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-desktop"></span>
-                        <a href="/services/animation/"><h3>3D Animations</h3></a>
-                        <p>Aside from 3D models, we also render 3D animations on tools like Maya and Blender, to be used in projects such as product advertisement.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-cog"></span>
-                        <a href="/services/threed/"><h3>UI/UX design</h3></a>
-                        <p>User interface and expirience are the most the vital parts when it comes to the success of any app. We can design morden responsive templates for your mobile and web applications.</p>
-                    </section>
-                    <section>
-                        <span class="icon solid major fa-code"></span>
-                        <a href="/srvices/webview/"><h3>App Development</h3></a>
-                        <p>We also create responsive and native mobile apps that can run on both Android and IOS through the use of tools like Fluter and React Native. </p>
-                    </section>
+                    {%endfor%}
                 </div>
             </div>
         </section>

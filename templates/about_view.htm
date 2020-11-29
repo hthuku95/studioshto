@@ -7,27 +7,22 @@
         <h1>About Hto Studios</h1>
     </div>
     <div class="my_wrapper">
-        <div class="image image-one"><img src="{% static "images/about01.jpg" %}" alt=""></div>
+        {%for about in abouts%}
+        <div class="image image-one"><img src="{{about.htostudios_thumb.url}}" alt=""></div>
         <div>
-            <h1>What is HtoStudios ?</h1>
-            <p>Hto Studios is an art gallery started by Harry thuku </p>
-            <p>We showcase different forms of art like pixel 2D art, 3D models, Animations, CGI, 
-               Videogames and app design themes, yes app design themes because at 
-               Hto Studios web design and development is not a coding skill, its an art <br>We also have a blog
-               post where by we write about tech related topics and art.
-               You can read our stories from <a href="/articles">here</a></p>
+            <h1>{{about_htostudios_title}}</h1>
+            <p>{{about.htostudios_intro}}</p>
+            <p>{{about.htostudios_description}}</p>
         </div>
         <div>
-            <h1>Who is Harry ?</h1>
-            <p>That would be me, no relations to the freedom fighter 😂😂!</p>
+            <h1>{{about.harry_title}}</h1>
+            <p>{{about.harry_intro}}</p>
             <p>
-                I’m a self taught programmer/game developer and a computer science student from Kenya. I’m so enthusiastic when 
-                it comes to computers, science and all things tech related. I started Hto Studios because
-                I enjoy reading and writing about tech and art and I also wanted
-                to offer my development skills to the world. <br> You can view my work <a href="https://www.github.com/hthuku95">here</a>
+                {{about.harry_description}}
             </p>
         </div>
-        <div class="image image-two"><img src="{% static "images/about02.jpg" %}" alt=""></div>
+        <div class="image image-two"><img src="{{about.harry_thumb.url}}" alt=""></div>
+        {%endfor%}
     </div>
 </div>
 
