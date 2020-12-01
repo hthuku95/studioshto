@@ -12,6 +12,7 @@ urlpatterns = [
     path(r'about/',views.about_view),
     path(r'services/',include('services.urls')),
     path(r'articles/',include('articles.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 #appending the static files urls to the above media
 urlpatterns += staticfiles_urlpatterns()
