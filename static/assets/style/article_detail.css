@@ -2,6 +2,12 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: 0;
 }
+.h1.major > h2 > em > i.fas{
+
+    font-size: 150px;
+    color: #fff;
+
+}
 @media screen and (min-width:1200px){
     .body-container{
         width:70%;
