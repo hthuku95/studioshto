@@ -72,7 +72,7 @@
                                     <ul class="list-group">
                                         {%for comment in comments%}
                                         <li class="list-group-item">
-                                            <p><strong>{{comment.name}}</strong> <a href="#">{{comment.date}}</a> </p>
+                                            <p><strong>{{comment.user}}</strong> <a href="#">{{comment.date}}</a> </p>
                                             <p>{{comment.comment_body}}</p>
                                         </li>
                                         {%endfor%}

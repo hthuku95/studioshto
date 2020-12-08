@@ -28,6 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    #templates
+    'bootstrap_modal_forms',
+
     #local apps
     'services',
     'articles',

@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user
 from .models import Contact ,Article,Comment,Category,Reply
 from .forms import CommentForm , ReplyForm
 
@@ -35,18 +37,18 @@ def article_details(request,slug):
 
 
 #article comments
+@login_required(login_url= "/accounts/login")
 def article_comment(request,slug):
     article = Article.objects.get(slug=slug)
     if request.method == 'POST':
+        User = get_user(request)
         form = CommentForm(request.POST)
         if form.is_valid():
 
             #getting values of the form field
-            name = form.cleaned_data['name']
-            email_address = form.cleaned_data['email']
             comment_body = form.cleaned_data['comment']
 
-            newComment = Comment(name = name,parent_article = article,comment_body = comment_body, email=email_address)
+            newComment = Comment(user = User,parent_article = article,comment_body = comment_body)
             newComment.save()
     return redirect('/articles/'+article.slug+ '/')
 
@@ -55,15 +57,14 @@ def article_reply(request,slug):
     article = Article.objects.get(slug=slug)
     comment = Comment.objects.get(parent_comment=parent_comment)
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        User = get_user(request)
+        form = ReplyForm(request.POST)
         if form.is_valid():
 
             #getting values of the form field
-            name = form.cleaned_data['name']
-            email_address = form.cleaned_data['email']
             reply_body = form.cleaned_data['reply']
 
-            newReply = Reply(name = name,parent_comment = comment,reply_body = reply_body, email=email_address)
+            newReply = Reply(user = User,parent_comment = comment,reply_body = reply_body)
             newReply.save()
     return redirect('/articles/'+article.slug+ '/')
 

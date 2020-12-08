@@ -1,0 +1,15 @@
+{%extends 'base_layout.htm'%}
+{% load static %}
+{% block title %}Hto Studios - Sign up {% endblock %}
+{%block content%}
+ <div class="register-container">
+     <div class="register-text">
+        <span class="fas fa-sign-in-alt"></span>
+        <p>Signup or Login</p>
+     </div>
+     <div class="register-content">
+         <a href="/accounts/google/login" class="google"><i class="fab fa-google left"></i></a>
+         <a href="/accounts/facebook/login" class="facebook"><i class="fab fa-facebook left"></i></a>
+     </div>
+ </div>
+{%endblock%}

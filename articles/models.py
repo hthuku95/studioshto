@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 
@@ -57,12 +58,11 @@ class Article (models.Model):
         return self.section_one[:50] 
         
 #comment model
+User = get_user_model()
 class Comment (models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     parent_article = models.ForeignKey(Article, on_delete=models.CASCADE)
     date = models.DateTimeField(  auto_now_add=True,blank=True,null=True)
-
-    name = models.CharField( max_length=50,null=True)
-    email = models.EmailField( max_length=254,null=True)
     comment_body = models.TextField( max_length=100)
 
     #snippet utils
@@ -71,11 +71,9 @@ class Comment (models.Model):
 
 #reply model
 class Reply (models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     parent_comment = models.ForeignKey(Comment,on_delete=models.CASCADE)
     date = models.DateTimeField(  auto_now_add=True,blank=True,null=True)
-
-    name = models.CharField( max_length=50)
-    email = models.EmailField( max_length=254)
     reply_body = models.TextField(max_length=100)
 
     #snippet utils

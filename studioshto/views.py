@@ -44,3 +44,9 @@ def about_view(request):
 
     # @rendering view
     return render(request, 'about_view.htm',{'abouts':abouts})
+
+
+
+#register page view
+def register_view(request):
+    return render(request, 'register_view.htm')
