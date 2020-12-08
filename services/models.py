@@ -29,7 +29,7 @@ class Project (models.Model):
     date = models.DateTimeField( auto_now_add=True)
 
     #relationships
-    service = models.ManyToManyField(Service,blank = True)
+    service = models.ForeignKey(Service,on_delete=models.CASCADE,blank = True,null=True)
 
     #snippet utils
     def __str__(self):

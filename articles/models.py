@@ -26,27 +26,30 @@ class Article (models.Model):
     title = models.CharField( max_length=50 ,blank=True)
     slug = models.SlugField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    date = models.DateTimeField(  auto_now_add=True)
+    summary = models.CharField( max_length=100)
     views = models.IntegerField(blank=True,default=0,null=True)
 
     thumb = models.ImageField()
     thumb_description = models.CharField( max_length=50,null=True)
 
-    summary = models.CharField( max_length=100)
+ 
     introduction = models.TextField(blank=True,null=True)
 
-    section_one = models.TextField()
     thumb_one = models.ImageField(blank=True,null=True)
     thumb_one_description = models.CharField(blank=True, max_length=50)
+    section_one = models.TextField()
 
-    section_two = models.TextField(null=True)
     thumb_two = models.ImageField(blank=True,null=True)
     thumb_two_description = models.CharField(blank=True, max_length=50)
+    section_two = models.TextField(null=True)
 
-    section_three = models.TextField(null=True)
+    
     thumb_three = models.ImageField(blank=True,null=True)
     thumb_three_description = models.CharField(blank=True, max_length=50)
+    section_three = models.TextField(null=True)
 
-    date = models.DateTimeField(  auto_now_add=True)
+
 
     category = models.ManyToManyField(Category,blank = True)
 
