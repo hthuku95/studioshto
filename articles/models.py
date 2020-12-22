@@ -31,25 +31,7 @@ class Article (models.Model):
     views = models.IntegerField(blank=True,default=0,null=True)
 
     thumb = models.ImageField()
-    thumb_description = models.CharField( max_length=50,null=True)
-
- 
-    introduction = models.TextField(blank=True,null=True)
-
-    thumb_one = models.ImageField(blank=True,null=True)
-    thumb_one_description = models.CharField(blank=True, max_length=50)
-    section_one = models.TextField()
-
-    thumb_two = models.ImageField(blank=True,null=True)
-    thumb_two_description = models.CharField(blank=True, max_length=50)
-    section_two = models.TextField(null=True)
-
-    
-    thumb_three = models.ImageField(blank=True,null=True)
-    thumb_three_description = models.CharField(blank=True, max_length=50)
-    section_three = models.TextField(null=True)
-
-
+    thumb_description = models.CharField( max_length=50,null=True) 
 
     category = models.ManyToManyField(Category,blank = True)
 
@@ -58,7 +40,7 @@ class Article (models.Model):
         return self.title
     
     def snippet(self):
-        return self.section_one[:50] 
+        return self.summary[:50] 
         
 #comment model
 User = get_user_model()
@@ -83,6 +65,31 @@ class Reply (models.Model):
     def __str__(self):
         return self.reply_body[:40]
 
+# @Types model
+class Shape (models.Model):
+    name = models.CharField( max_length=50)
+    date = models.DateTimeField(  auto_now_add=True,blank=True,null=True)
+
+    #snippet utils
+    def __str__(self):
+        return self.name
+
+# @sections model
+class Section (models.Model):
+    article = models.ForeignKey(Article,on_delete=models.CASCADE,null=True)
+    section_id = models.AutoField(primary_key=True)
+    section_shape = models.ForeignKey(Shape,blank=True,null=True ,on_delete=models.CASCADE)
+    heading = models.CharField(blank=True, max_length=50)
+    Section_image = models.ImageField(blank=True)
+    paragraph = models.TextField(blank=True)
+    code = models.TextField(blank=True)
+    Section_video = models.FileField(blank=True)
+
+
+    #snippet utils
+    def __str__(self):
+        return self.paragraph[:20]
+    
 #contact model
 class Contact (models.Model):
     name = models.CharField( max_length=50)

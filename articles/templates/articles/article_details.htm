@@ -14,7 +14,6 @@
 					</ul>
 				</nav>
 			</header>
-
 		<!-- Wrapper -->
 			<div id="wrapper">
 				    <!-- Main -->
@@ -27,23 +26,27 @@
                                 <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END --> <br/>
                                 <span class="image fit"><img src="{{article.thumb.url}}" alt="{{article.title}}" class="article-image"></span>
                                 <p class="thumb-description"><em>{{article.thumb_description}}</em></p>
-                                <p>{{article.introduction}}</p>
-                                <span class="image fit"><img src="{{article.thumb_one.url}}" alt="{{article.thumb_one_description}}" class="article-image"/></span>
-                                <p class="thumb-description"><em>{{article.thumb_one_description}}</em></p>
-                                <p>{{article.section_one}}</p>
-                                <span class="image fit"><img src="{{article.thumb_two.url}}" alt="{{article.thumb_two_description}}" class="article-image" /></span>
-                                <p class="thumb-description"><em>{{article.thumb_two_description}}</em></p>
-                                <p>{{article.section_two}}</p>
-                                <span class="image fit"><img src="{{article.thumb_three.url}}" alt="{{article.thumb_three_description}}" class="article-image"/></span>
-                                <p class="thumb-description"><em>{{article.thumb_three_description}}</em></p>
-                                <p>{{article.section_three}}</p>
-                            <!-- Comment section -->
+
+                                <!--Article sections-->
+                                <ul>
+                                    {%for section in sections%}
+                                    <li>
+                                        <h2 class="major section-heading">{{section.heading}}</h2>
+                                        <span><img src="{{section.section_image.url}}" class="article-image"></span>
+                                        <p class="section-paragraph">{{section.paragraph}} </p>
+                                        <p class="section-code">{{section.code}}</p>
+                                        <p>{{section.section_video}}</p>
+                                    </li>
+                                    {%endfor%}
+                                </ul>
+
+                                <!--You can also read-->
                                 <h1 class="major">
                                     <h2>you can also read...</h2>
                                 </h1>
-                                <ul class="list-group">
+                                <ul>
                                     {%for story in stories%}
-                                    <li class="list-group-item">
+                                    <li>
                                         <p><a href="/articles/{{story.title}}/">{{story.title}}</a> </p>
                                     </li>
                                     {%endfor%}
@@ -51,39 +54,32 @@
                                 <h1 class="major">
                                     <h2><em></em> </h2>
                                 </h1>
-                                <div class="comment-box">
-                                    <div class="my-comment-section">
-                                        <form action="/articles/comment/{{article.slug}}/" method="post">
-                                            {% csrf_token %}
-                                            <div class="fields">
-                                                {%for field in form%}
-                                                <div class="field half">
-                                                    <label for="{{field.name}}">{{field.name}}</label>
-                                                    {{field}}
-                                                </div>
-                                                {%endfor%}
-                                            </div>
-                                            <input type="submit"class="btn btn-secondary my-comment-button" value="Add Comment">
-                                        </form>
-                                    </div>
-                                    <h1 class="major">
-                                       <h2><em><i class="fas fa-comments"></i>  {{numberOfComments}} </em></h2> 
-                                    </h1>
-                                    <ul class="list-group">
-                                        {%for comment in comments%}
-                                        <li class="list-group-item">
-                                            <div class="avatar"></div>
-                                            <div class="comment-body">
-                                                <p><strong>{{comment.user}}</strong> <a href="#">{{comment.date}}</a> </p>
-                                                <p>{{comment.comment_body}}</p>
-                                            </div>
-                                        </li>
-                                        {%endfor%}
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                      </section>
+                     <!--projects -->
+                     <section id="one" class="wrapper style2 spotlights">
+                        {%for project in projects%}
+                        <section>
+                            <a href="{{project.source_link}}" class="image"><img src="{{project.thumb.url}}" alt="{{project.title}}" data-position="center center" /></a>
+                            <div class="content">
+                                <div class="inner">
+                                    <p>
+                                        <a href="{{project.source_link}}">View Source</a>,<a href="{{project.display_link}}">Live display</a>,
+                                    </p>
+                                    <h2>{{project.title}}</h2>
+                                    <p>{{project.date}}</p>
+                                    <p>{{project.description}}</p>
+                                    <ul class="actions">
+                                        <li><a href="{{project.buy_link}}" class="button">Bid</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        {%endfor%}
+                    </section>
+            
+
 			</div>
 
 {%endblock%}

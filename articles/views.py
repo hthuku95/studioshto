@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
-from .models import Contact ,Article,Comment,Category,Reply
+from .models import Contact ,Article,Comment,Category,Reply, Section
 from .forms import CommentForm , ReplyForm
+from services.models import Project
 
 
 # Create your views here.
@@ -23,6 +24,10 @@ def article_details(request,slug):
     article = Article.objects.get(slug=slug)
     stories = Article.objects.all().order_by('date')[:5]
     comments = Comment.objects.filter(parent_article=article)
+    sections = Section.objects.filter(article=article)
+    categories = Category.objects.all()
+    projects = Project.objects.all().order_by('date')[:5]
+
     #updating the number of views
     article.views = article.views + 1
     article.save()
@@ -33,7 +38,17 @@ def article_details(request,slug):
 
     #number of comments
     numberOfComments = Comment.objects.filter(parent_article=article).count()
-    return render(request,'articles/article_details.htm',{'article':article,'comments':comments,'form':form,'form_2':form_2,'numberOfComments':numberOfComments,'stories':stories})
+    return render(request,'articles/article_details.htm',{
+        'article':article,
+        'comments':comments,
+        'form':form,
+        'form_2':form_2,
+        'numberOfComments':numberOfComments,
+        'stories':stories,
+        'sections':sections,
+        'categories':categories,
+        'projects':projects
+        })
 
 
 #article comments

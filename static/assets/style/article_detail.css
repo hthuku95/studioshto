@@ -8,17 +8,17 @@
     color: #fff;
 
 }
-.comment-box >ul.list-group{
+.comment-box >ul{
     border: solid 2px rgb(126, 86, 163);
     border-radius: 25px;
     padding-left: 0;
 }
-.comment-box >ul.list-group > li.list-group-item{
+.comment-box >ul > li{
     display: block;
     border-bottom: solid 1px rgb(126, 86, 163);
 
 }
-.comment-box >ul.list-group > li.list-group-item :last-child{
+.comment-box >ul > li {
     border-radius: 25px;
 }
 @media screen and (min-width:1200px){
@@ -59,6 +59,6 @@
         height: 360px;
     }
 }
-ul.list-group{
+ul {
     list-style: none;
 }
