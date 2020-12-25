@@ -1,6 +1,7 @@
 {%extends 'base_layout.htm'%}
 {%load static%}
 {% block title %}{{article.title}} - HtoStudios{% endblock %}
+{%block meta%}<meta name="description" content="{{article.summary}}">{%endblock%}
 {%block content%}
 
 		<!-- Header -->

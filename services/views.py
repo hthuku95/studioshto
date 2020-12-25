@@ -9,4 +9,4 @@ def services_view(request):
 def service_list(request,slug):
     projects = Project.objects.filter(service__name = slug)
     services = Service.objects.all()
-    return render(request,'services/service_list.htm',{'projects':projects,'services':services})
+    return render(request,'services/service_list.htm',{'projects':projects,'services':services,'solutions':solutions})

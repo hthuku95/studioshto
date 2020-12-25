@@ -1,6 +1,7 @@
 {%extends 'base_layout.htm'%}
 {%load static%}
 {% block title %}articles - Hto Studios{% endblock %}
+{%block meta%}<meta name="description" content="explore all of our articles, from news to educational blogposts">{%endblock%}
 {%block content%}
     <section id="one" class="wrapper style2 spotlights">
         {%for article in articles%}

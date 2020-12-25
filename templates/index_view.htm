@@ -1,6 +1,10 @@
 {%extends 'base_layout.htm'%}
 {% load static %}
 {% block title %}Hto Studios - Web Development, App Development, Game Development, Art{% endblock %}
+{%block meta%}
+<meta name="description" content="HtoStudios is a technology focused website.from programming and web development blogpost to game development and 3D Art">
+<meta name="description" content="{%for service in services%} {{service.name}},{%endfor%}">
+{% endblock %}
 {%block content%}
 <section id="sidebar">
     <div class="inner">

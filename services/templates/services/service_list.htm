@@ -1,6 +1,7 @@
 {%extends 'base_layout.htm'%}
 {% load static %}
 {% block title %}Hto Studios - Services{% endblock %}
+{%block meta%}<meta name="description" content="{%for solution in solutions%}{{solution.body}}{%endfor%}">{%endblock%}
 {%block content%}
 <div id="wrapper">
     <section id="one" class="wrapper style2 spotlights">
