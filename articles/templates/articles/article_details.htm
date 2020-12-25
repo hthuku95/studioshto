@@ -25,7 +25,7 @@
                                 <p>By <strong>{{article.author}}</strong> {{article.date}}</p>
                                 <p style="font-style: italic;">{{article.summary}}</p>
                                 <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END --> <br/>
-                                <span class="image fit"><img src="{{article.thumb.url}}" alt="{{article.title}}" class="article-image"></span>
+                                <span class="image fit"><img src="{{article.thumb.url}}" alt="{{article.title}}" class="article-image" ></span>
                                 <p class="thumb-description"><em>{{article.thumb_description}}</em></p>
 
                                 <!--Article sections-->
@@ -33,14 +33,14 @@
                                     {%for section in sections%}
                                     <li>
                                         <h2 class="major section-heading">{{section.heading}}</h2>
-                                        <span><img src="{{section.section_image.url}}" class="article-image"></span>
+                                        <img src="{{section.image.url}}" class="img-fluid" height="400">
                                         <p class="section-paragraph">{{section.paragraph}} </p>
-                                        <p class="section-code">{{section.code}}</p>
+                                        <pre class="section-code"><code class="{{section.code_language}}">{{section.code}}</code></pre>
                                         <p>{{section.section_video}}</p>
                                     </li>
                                     {%endfor%}
                                 </ul>
-
+                                
                                 <!--You can also read-->
                                 <h1 class="major">
                                     <h2>you can also read...</h2>

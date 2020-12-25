@@ -21,6 +21,17 @@
 .comment-box >ul > li {
     border-radius: 25px;
 }
+pre{
+    /**background-color:#1b1b47;**/
+    border-radius: 5px;
+    
+    width:100%;
+    overflow:auto;    
+
+    font-size: 0.9em;
+    color: #fff;
+}
+
 @media screen and (min-width:1200px){
     .body-container{
         width:70%;

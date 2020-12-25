@@ -80,10 +80,11 @@ class Section (models.Model):
     section_id = models.AutoField(primary_key=True)
     section_shape = models.ForeignKey(Shape,blank=True,null=True ,on_delete=models.CASCADE)
     heading = models.CharField(blank=True, max_length=50)
-    Section_image = models.ImageField(blank=True)
+    image = models.ImageField(blank=True)
     paragraph = models.TextField(blank=True)
     code = models.TextField(blank=True)
-    Section_video = models.FileField(blank=True)
+    code_language = models.CharField(null=True,blank=True, max_length=50)
+    video = models.FileField(blank=True)
 
 
     #snippet utils
