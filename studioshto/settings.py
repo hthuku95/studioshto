@@ -14,7 +14,7 @@ SECRET_KEY = '0^!^d#o%x^efe4b$alnp6a#dpl^we#qyq@h^c$0!wk=8yi#d^^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['165.22.0.85','www.htostudios.com','htostudios.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['167.71.84.61','www.htostudios.com','htostudios.com','localhost','127.0.0.1']
 
 
 # Application definition
