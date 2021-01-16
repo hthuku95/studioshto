@@ -6,3 +6,4 @@ class CommentForm(forms.Form):
 class ReplyForm(forms.Form):
     reply = forms.CharField( label='',widget=forms.Textarea(attrs={'id':'message','name':'message','rows':5}))
 
+

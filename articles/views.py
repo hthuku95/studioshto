@@ -2,8 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
 from .models import Contact ,Article,Comment,Category,Reply, Section
-from .forms import CommentForm , ReplyForm
+from .forms import CommentForm , ReplyForm 
 from services.models import Project
+
 
 
 # Create your views here.
@@ -35,6 +36,7 @@ def article_details(request,slug):
     #forms
     form = CommentForm()
     form_2 = ReplyForm()
+
 
     #number of comments
     numberOfComments = Comment.objects.filter(parent_article=article).count()
@@ -82,4 +84,5 @@ def article_reply(request,slug):
             newReply = Reply(user = User,parent_comment = comment,reply_body = reply_body)
             newReply.save()
     return redirect('/articles/'+article.slug+ '/')
+
 
