@@ -25,7 +25,7 @@ def article_details(request,slug):
     article = Article.objects.get(slug=slug)
     stories = Article.objects.all().order_by('date')[:5]
     comments = Comment.objects.filter(parent_article=article)
-    sections = Section.objects.filter(article=article)
+    sections = Section.objects.filter(root_article=article)
     categories = Category.objects.all()
     projects = Project.objects.all().order_by('date')[:5]
 
@@ -51,7 +51,6 @@ def article_details(request,slug):
         'categories':categories,
         'projects':projects
         })
-
 
 #article comments
 @login_required(login_url= "/accounts/login")

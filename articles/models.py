@@ -76,11 +76,12 @@ class Shape (models.Model):
 
 # @sections model
 class Section (models.Model):
-    article = models.ForeignKey(Article,on_delete=models.CASCADE,null=True)
+    name = models.CharField( max_length=50,null=True)
+    root_article = models.ForeignKey(Article,on_delete=models.CASCADE,null=True)
     section_id = models.AutoField(primary_key=True)
     section_shape = models.ForeignKey(Shape,blank=True,null=True ,on_delete=models.CASCADE)
     heading = models.CharField(blank=True, max_length=50)
-    image = models.ImageField(blank=True)
+    section_image = models.ImageField(blank=True)
     paragraph = models.TextField(blank=True)
     code = models.TextField(blank=True)
     code_language = models.CharField(null=True,blank=True, max_length=50)
@@ -89,7 +90,7 @@ class Section (models.Model):
 
     #snippet utils
     def __str__(self):
-        return self.paragraph[:20]
+        return self.name
     
 #contact model
 class Contact (models.Model):

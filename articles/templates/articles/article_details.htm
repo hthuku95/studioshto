@@ -27,23 +27,21 @@
                                 <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END --> <br/>
                                 <span class="image fit"><img src="{{article.thumb.url}}" alt="{{article.title}}" class="img-fluid" ></span>
                                 <p class="thumb-description"><em>{{article.thumb_description}}</em></p>
-
-                                <!--Article sections-->
-                                <ul>
-                                    {%for section in sections%}
-                                    <li>
-                                        <h2 class="major section-heading">{{section.heading}}</h2>
-                                        <img src="{{section.image.url}}" class="img-fluid" height="400">
-                                        <p class="section-paragraph">{{section.paragraph}} </p>
-                                        <pre class="section-code"><code class="{{section.code_language}}">{{section.code}}</code></pre>
-                                        <p>{{section.section_video}}</p>
-                                    </li>
-                                    {%endfor%}
-                                </ul>
+                                {%for section in sections%}
+                                    <p>{{section.heading}}</p>
+                                    <p>{{section.name}}</p>
+                                    {% if section.section_image %}
+                                    <span class="image fit"><img src="{{ section.section_image.url }}" class="img-fluid"></span>
+                                    {% endif %}
+                                    <p>{{section.paragraph}}</p>
+                                    <pre><code class="{{section.code_language}}">{{section.code}}</code></pre>
+                                {%endfor%}
                                 <!--You can also read-->
                                 <h1 class="major">
+
                                     <h2>you can also read...</h2>
                                 </h1>
+
                                 <ul>
                                     {%for story in stories%}
                                     <li>
@@ -51,6 +49,7 @@
                                     </li>
                                     {%endfor%}
                                 </ul>
+
                                 <h1 class="major">
                                     <h2><em></em> </h2>
                                 </h1>
