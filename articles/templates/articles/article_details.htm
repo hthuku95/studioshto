@@ -29,7 +29,6 @@
                                 <p class="thumb-description"><em>{{article.thumb_description}}</em></p>
                                 {%for section in sections%}
                                     <p>{{section.heading}}</p>
-                                    <p>{{section.name}}</p>
                                     {% if section.section_image %}
                                     <span class="image fit"><img src="{{ section.section_image.url }}" class="img-fluid"></span>
                                     {% endif %}
