@@ -28,7 +28,7 @@
                                 <span class="image fit"><img src="{{article.thumb.url}}" alt="{{article.title}}" class="img-fluid" ></span>
                                 <p class="thumb-description"><em>{{article.thumb_description}}</em></p>
                                 {%for section in sections%}
-                                    <p>{{section.heading}}</p>
+                                    <h2>{{section.heading}}</h2>
                                     {% if section.section_image %}
                                     <span class="image fit"><img src="{{ section.section_image.url }}" class="img-fluid"></span>
                                     {% endif %}
