@@ -33,7 +33,9 @@
                                     <span class="image fit"><img src="{{ section.section_image.url }}" class="img-fluid"></span>
                                     {% endif %}
                                     <p>{{section.paragraph}}</p>
+                                    {% if section.code %}
                                     <pre><code class="{{section.code_language}}">{{section.code}}</code></pre>
+                                    {% endif %}
                                 {%endfor%}
                                 <!--You can also read-->
                                 <h1 class="major">
